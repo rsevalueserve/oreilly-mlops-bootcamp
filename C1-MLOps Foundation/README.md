@@ -5,21 +5,21 @@ This repository contains hands-on exercises for the **MLOps Foundation** course.
 
 ## Repository Structure
 
-### 2.2. Hands-on git
+### 2.2. Hands-on git (Module 2)
 - **Description**: In this hands-on exercise, we implement a simple Random Forest model on the famous **Iris dataset**. We also use **Git** for version control to manage the code and track changes.
 - **Files**:
   - `app.py`: Python script to train a random forest model on the Iris dataset.
   - `iris_model.pkl`: Pickled model for saving the trained Random Forest model.
   - `requirements.txt`: List of Python dependencies required for the Random Forest model.
 
-### 3.3. Hands-on mlflow
+### 3.3. Hands-on mlflow (Module 3)
 - **Description**: This notebook demonstrates how to use **MLflow** to track and manage the development of a classification model for **air quality prediction**. The dataset includes various environmental features, such as temperature, humidity, pollutant levels (PM2.5, PM10, NO2, SO2, CO), and proximity to industrial areas and population density. The goal is to classify air quality into categories like "Good", "Moderate", or "Hazardous" using a **Logistic Regression model**. We use **MLflow's tracking server** and **model registry** to manage the model and different versions of it.
 - **Files**:
   - `Hands-on_mlflow_Experiment_Tracking_and_Model_Management.ipynb`: Jupyter notebook with the code for training the logistic regression model, logging experiments with MLflow, and evaluating model performance.
   - `air_quality.csv`: Dataset used for training and testing the air quality prediction model.
   - `requirements.txt`: List of Python dependencies required for running the MLflow tracking server and model management.
 
-### 4.2. Hands-on docker
+### 4.2. Hands-on docker ((Module 4)
 - **Description**: This hands-on exercise involves building and deploying an **Age Detection model** using **Flask** and **Docker**. The application takes an image and returns the predicted age. It is containerized with a Dockerfile, making it easy to deploy the model in any environment.
 - **Files**:
   - `app.py`: Flask application for serving the age detection model.
