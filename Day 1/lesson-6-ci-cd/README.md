@@ -32,8 +32,13 @@ Integrate a CI/CD pipeline that:
    ```bash
    git clone https://github.com/AmmarMohanna/oreilly-mlops-bootcamp.git
    cd oreilly-mlops-bootcamp/Day1/lesson-6-ci-cd
-2. Push code to **GitHub**.
-3. GitHub Actions will automatically:
+
+2. Train the model and update app.py with your run ID
+(Make sure to insert the correct MLflow run ID for model loading.)
+
+
+4. Push code to **GitHub**.
+5. GitHub Actions will automatically:
    - Run tests on each push
    - Build the Docker image
 
