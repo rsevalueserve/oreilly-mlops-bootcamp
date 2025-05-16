@@ -59,31 +59,30 @@ The dataset contains demographic and employment-related features:
 - `app.py`: Flask API for inference
 - `Dockerfile`: Containerizes the API
 - `requirements.txt`: Required packages
-- `model/`: Contains saved model & preprocessor
-- `mlruns/`: Auto-generated MLflow logs
 
 ##  How to Use
-1. Clone the repo:
+1. **Clone the repo:**
    ```bash
    git clone https://github.com/AmmarMohanna/oreilly-mlops-bootcamp.git
    cd oreilly-mlops-bootcamp/Day1/lesson-5-ml-pipeline
 
-2. Install Required Libraries
+2. **Install Required Libraries:**
     ```bash
     pip install -r requirements.txt
 
-3. Run preprocessing & training:
+3. **Run preprocessing & training:**
    ```bash
    python train.py
-
-4. Start Flask app locally:
+   
+ Don't forget to replace the run ID with the one from your own run in the app.py 
+ 
+4. **Start Flask app locally:**
     ```bash
     python app.py
-
-5. OR build with Docker:
+    
+5. **OR build with Docker:**
     ```bash
     docker build -t income-classifier .
     docker run -p 5000:5000 income-classifier
 
 Use API at http://localhost:5000
-
