@@ -42,9 +42,11 @@ Deploy a full MLOps workflow with:
 
 This project demonstrates how to manage, serve, monitor, and scale ML models in production.
 
+🔗 See [`lesson-10-mlops-practices/README.md`](lesson-10-mlops-practices/README.md)  lesson-10-mlops-practices/README.md for end-to-end MLOps.
+
 ---
 
-## 🛠️ Prerequisites
+##  Prerequisites
 
 Before starting, make sure you have the following installed:
 
