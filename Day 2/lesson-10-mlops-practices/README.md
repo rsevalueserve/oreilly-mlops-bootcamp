@@ -33,7 +33,7 @@ Sure! Here's a shorter version of each item (3–4 words each) for a concise ove
 
 ---
 
-## 📁 Project Structure (Short Descriptions)
+##  Project Structure 
 
 
 * **`app.py`** – Serves predictions + metrics
