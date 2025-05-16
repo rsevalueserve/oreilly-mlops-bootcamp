@@ -41,13 +41,10 @@ Sure! Here's a shorter version of each item (3–4 words each) for a concise ove
 * **`requirements.txt`** – Required Python packages
 * **`data/`** – Raw + new datasets
 * **`data_pipeline/`** – Data cleaning + encoding
-* **`model/`** – Saved models + transformers
-* **`scripts/train.py`** – Model training + logging
+* **`train.py`** – Model training + logging
 * **`test/`** – Unit + API testing
 * **`k8s-deployment.yaml`** – Flask deployment + service
 * **`monitoring-deployment.yaml`** – Monitoring stack deployment
-* **`hpa.yaml`** – Horizontal scaling config
-
 
 ---
 
