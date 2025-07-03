@@ -11,6 +11,8 @@ from data_pipeline.preprocessing import load_and_preprocess_data
 def train():
     X_train, X_test, y_train, y_test, preprocessor = load_and_preprocess_data()
 
+    # Set MLflow tracking URI to local directory for CI environment
+    mlflow.set_tracking_uri("file:./mlruns")
     mlflow.set_experiment("Income_Classification")
     with mlflow.start_run():
 
@@ -35,7 +37,13 @@ def train():
         # Save model and preprocessor
         joblib.dump(clf, "model/rf_model.pkl")
         joblib.dump(preprocessor, "model/preprocessor.pkl")
-        mlflow.sklearn.log_model(clf, "model")
+        
+        # Try to log model to MLflow, but don't fail if it doesn't work
+        try:
+            mlflow.sklearn.log_model(clf, "model")
+        except Exception as e:
+            print(f"Warning: Could not log model to MLflow: {e}")
+            print("Model saved locally only.")
 
 if __name__ == "__main__":
     train()

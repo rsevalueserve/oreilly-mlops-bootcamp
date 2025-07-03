@@ -1,5 +1,4 @@
 from flask import Flask, request, jsonify
-import mlflow.sklearn
 import pandas as pd
 from sklearn.preprocessing import StandardScaler, OneHotEncoder
 from sklearn.compose import ColumnTransformer
@@ -9,18 +8,23 @@ import joblib
 
 app = Flask(__name__)
 
-
-# Use your actual run_id as a string
-experiment_id = "610701116881259007"
-run_id = "ba8123692cc644c28b3af071126018db"
-model_uri = f"mlruns/{experiment_id}/{run_id}/artifacts/model"
-model = mlflow.sklearn.load_model(model_uri)
-
-preprocessor = joblib.load("model/preprocessor.pkl") 
+# Load model and preprocessor from local files for CI/CD reliability
+try:
+    model = joblib.load("model/rf_model.pkl")
+    preprocessor = joblib.load("model/preprocessor.pkl")
+except FileNotFoundError as e:
+    print(f"Error loading model files: {e}")
+    print("Make sure to run train.py first to generate model files.")
+    model = None
+    preprocessor = None 
  
 @app.route("/predict", methods=["POST"])
 def predict():
     try:
+        # Check if model and preprocessor are loaded
+        if model is None or preprocessor is None:
+            return jsonify({"error": "Model not loaded. Please run train.py first."}), 500
+            
         # Check if the input is in JSON format
         data = request.get_json()
 
@@ -29,7 +33,6 @@ def predict():
 
         # Convert the data to a pandas DataFrame
         data = pd.DataFrame([data])
-
 
         # Apply preprocessing to input data
         processed_data = preprocessor.transform(data)

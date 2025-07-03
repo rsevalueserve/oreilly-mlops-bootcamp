@@ -52,6 +52,11 @@ jobs:
     - name: Checkout the repository
       uses: actions/checkout@v3
 
+    - name: Train model for deployment
+      run: |
+        cd "Day 1/lesson-6-ci-cd"
+        python train.py
+
     - name: Build Docker image
       run: |
         cd "Day 1/lesson-6-ci-cd"
