@@ -4,6 +4,7 @@ import mlflow.sklearn
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.metrics import classification_report, accuracy_score
 import joblib
+import os
 
 from data_pipeline.preprocessing import load_and_preprocess_data  
 
@@ -28,9 +29,16 @@ def train():
                 mlflow.log_metric(f"{label}_precision", scores["precision"])
                 mlflow.log_metric(f"{label}_recall", scores["recall"])
 
-        # Save model and preprocessor
-        joblib.dump(clf, "model/rf_model.pkl")
-        joblib.dump(preprocessor, "model/preprocessor.pkl")
+        # Create model directory if it doesn't exist
+        model_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)), "model")
+        os.makedirs(model_dir, exist_ok=True)
+        
+        # Save model and preprocessor with dynamic paths
+        model_path = os.path.join(model_dir, "rf_model.pkl")
+        preprocessor_path = os.path.join(model_dir, "preprocessor.pkl")
+        
+        joblib.dump(clf, model_path)
+        joblib.dump(preprocessor, preprocessor_path)
         mlflow.sklearn.log_model(clf, "model")
 
 if __name__ == "__main__":

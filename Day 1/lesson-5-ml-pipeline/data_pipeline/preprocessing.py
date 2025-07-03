@@ -7,6 +7,7 @@ from sklearn.pipeline import Pipeline
 from imblearn.over_sampling import SMOTE
 import seaborn as sns 
 import matplotlib.pyplot as plt
+import os
 
 def load_and_preprocess_data():
     columns = [
@@ -16,8 +17,12 @@ def load_and_preprocess_data():
         "native-country", "income"
     ]
 
+    # Get the current directory and construct the path to the data file
+    current_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+    data_path = os.path.join(current_dir, "data", "adult.data")
+    
     # Load datasets
-    data = pd.read_csv(r"C:\Users\user\Desktop\ML Pipelines\data\adult.data", header=None, names=columns, na_values=" ?")
+    data = pd.read_csv(data_path, header=None, names=columns, na_values=" ?")
     # print(data.head)
     
     # Remove duplicates

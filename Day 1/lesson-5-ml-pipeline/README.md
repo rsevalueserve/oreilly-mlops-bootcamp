@@ -83,6 +83,6 @@ The dataset contains demographic and employment-related features:
 5. **OR build with Docker:**
     ```bash
     docker build -t income-classifier .
-    docker run -p 5000:5000 income-classifier
+    docker run -p 8000:8000 income-classifier
 
-Use API at http://localhost:5000
+Use API at http://localhost:8000
