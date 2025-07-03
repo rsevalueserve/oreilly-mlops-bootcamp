@@ -5,3 +5,5 @@ seaborn
 matplotlib
 mlflow
 pytest
+flask
+joblib

@@ -4,11 +4,9 @@ import pandas as pd
 from sklearn.metrics import f1_score
 from data_pipeline.preprocessing import load_and_preprocess_data 
 import os
-import mlflow
-# Paths to your saved model and preprocessor
-experiment_id = "143003826376354799"
-run_id = "e681d08cc4c6447f859d63f01a1d15a3"
-model_uri = f"mlruns/{experiment_id}/{run_id}/artifacts/model"
+# Use local model files instead of MLflow runs for CI/CD reliability
+model_path = "model/rf_model.pkl"
+preprocessor_path = "model/preprocessor.pkl"
 
 # Test Model Accuracy and F1 Score
 @pytest.fixture(scope="module")
@@ -16,8 +14,8 @@ def setup():
     # Load and preprocess the data
     _, X_test, _, y_test, _ = load_and_preprocess_data()  # Assuming X_test is already processed
     
-    # Load the trained model (we do not need to load the preprocessor here)
-    clf = mlflow.sklearn.load_model(model_uri)
+    # Load the trained model from local file
+    clf = joblib.load(model_path)
     
     return clf, X_test, y_test
 

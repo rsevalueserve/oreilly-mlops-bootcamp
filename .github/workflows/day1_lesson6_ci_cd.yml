@@ -34,6 +34,11 @@ jobs:
         python -m pip install --upgrade pip
         pip install -r requirements.txt
 
+    - name: Train model for testing
+      run: |
+        cd "Day 1/lesson-6-ci-cd"
+        python train.py
+
     - name: Run pytest
       run: |
         cd "Day 1/lesson-6-ci-cd"
