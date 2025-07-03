@@ -44,9 +44,9 @@ jobs:
 
     - name: Run Docker container for FastAPI app
       run: |
-        docker run -d -p 5000:5000 adult_income
+        docker run -d -p 8000:8000 adult_income
 
     - name: Wait and test FastAPI
       run: |
         sleep 5
-        curl http://localhost:5000/predict || echo "FastAPI not running"
+        curl http://localhost:8000/predict || echo "FastAPI not running"

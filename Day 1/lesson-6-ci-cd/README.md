@@ -27,6 +27,7 @@ Integrate a CI/CD pipeline that:
     * Build Docker image for FastAPI app
     * Run the app in a Docker container
     * Send a test request to verify the app is live
+
 ##  How to Use
 1. Clone the repo:
    ```bash
@@ -36,9 +37,9 @@ Integrate a CI/CD pipeline that:
 2. Train the model and update app.py with your run ID
 (Make sure to insert the correct MLflow run ID for model loading.)
 
+3. Push code to **GitHub**.
 
-4. Push code to **GitHub**.
-5. GitHub Actions will automatically:
+4. GitHub Actions will automatically:
    - Run tests on each push
    - Build the Docker image
 

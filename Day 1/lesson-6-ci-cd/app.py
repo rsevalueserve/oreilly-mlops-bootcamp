@@ -11,8 +11,8 @@ app = Flask(__name__)
 
 
 # Use your actual run_id as a string
-experiment_id = "143003826376354799"
-run_id = "e681d08cc4c6447f859d63f01a1d15a3"
+experiment_id = "610701116881259007"
+run_id = "ba8123692cc644c28b3af071126018db"
 model_uri = f"mlruns/{experiment_id}/{run_id}/artifacts/model"
 model = mlflow.sklearn.load_model(model_uri)
 
@@ -48,4 +48,4 @@ def predict():
         return jsonify({"error": str(e)}), 500
 
 if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=5000)
+    app.run(host="0.0.0.0", port=8000)
