@@ -1,35 +1,60 @@
-# Lesson 3: Experiment Tracking with MLflow
+# MLflow Experiment Tracking - Air Quality Classification
 
-This lesson demonstrates how to track experiments using **MLflow**, applied to a **logistic regression model** for air quality classification.
+This lesson demonstrates MLflow experiment tracking using a Jupyter notebook for air quality classification.
 
-##  Objective
-Track hyperparameters, metrics, and model versions for reproducibility and experiment comparison.
+## Quick Start
 
-##  Files
-- `mlflow-Experiment Tracking.ipynb`: Notebook for model training and MLflow tracking.
-- `air_quality.csv`: Dataset with environmental features.
-- `requirements.txt`: Required packages.
+### 1. Install Dependencies
+```bash
+pip install -r requirements.txt
+```
 
-##  How to Use
-1. Clone the repo:
-   ```bash
-   git clone https://github.com/AmmarMohanna/oreilly-mlops-bootcamp.git
-   cd oreilly-mlops-bootcamp//Day1/lesson-3-mlflow
+### 2. Start Jupyter Notebook
+```bash
+jupyter notebook
+```
 
-2. Install dependencies and start Jupyter or run in google collab:
+### 3. Open the Notebook
+Open `mlflow- Experiment Tracking.ipynb` in your browser.
 
-    ```bash
-    pip install -r requirements.txt
-    jupyter notebook
+### 4. Fix the Connection Issue (IMPORTANT)
+Before running the notebook cells, add this code in a new cell at the beginning:
 
-3. Open and run the notebook.
+```python
+import mlflow
+mlflow.set_tracking_uri("file:./mlruns")
+```
 
-    * Train a logistic regression model
-    * Log parameters, metrics, and model artifacts using MLflow
+### 5. Run All Cells
+Execute all cells in the notebook. The experiment will be logged locally in the `mlruns` folder.
 
+## View Your Experiments
 
-4. Start MLflow tracking UI in another terminal:
-    ```bash
-    mlflow ui
+After running the notebook, you can view your experiments:
+
+```python
+import mlflow
+import pandas as pd
+
+# View all experiments
+experiments = mlflow.search_experiments()
+for exp in experiments:
+    print(f"Experiment: {exp.name}")
     
-Visit http://localhost:5000 to monitor your experiments.
+    # View runs in this experiment
+    runs = mlflow.search_runs(experiment_ids=[exp.experiment_id])
+    for idx, run in runs.iterrows():
+        print(f"  Run ID: {run['run_id']}")
+        print(f"  Accuracy: {run.get('metrics.accuracy', 'N/A')}")
+```
+
+## Optional: Web UI
+```bash
+mlflow ui --port 5001
+```
+Then open: http://localhost:5001
+
+## Files
+- `mlflow- Experiment Tracking.ipynb`: Main notebook
+- `air_quality.csv`: Dataset
+- `requirements.txt`: Dependencies
