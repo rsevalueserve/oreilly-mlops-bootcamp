@@ -1,4 +1,3 @@
-
 # lesson-2-kubernetes-basics
 
 ##  Deploying a Dockerized Age Detection Model with Kubernetes
@@ -36,20 +35,10 @@ This lesson demonstrates how to deploy a pre-built age detection model (served v
    git clone https://github.com/AmmarMohanna/oreilly-mlops-bootcamp.git
    cd oreilly-mlops-bootcamp/Day2/lesson-2-kubernetes-basics
 
-2. **Pull or Build Docker Image**
-
-    Option A – Pull:
-
+2. **Build Docker Image**
     ```bash
-    docker pull mariamhsein/age_detect:latest
+    docker build -t age-detect:latest .
     ```
-
-    Option B – Build locally:
-
-    ```bash
-    docker build -t detect-face-api:latest .
-    ```
-
 
 3. **Deploy to Kubernetes:**
 
@@ -64,6 +53,14 @@ This lesson demonstrates how to deploy a pre-built age detection model (served v
     ```
     http://localhost:30600/detect_age
     ```
+
+---
+
+## Notes
+- The service is exposed on **NodePort 30600**.
+- The container and service now use **port 8080** internally (not 5000).
+- Make sure your requests go to `http://localhost:30600/detect_age`.
+- If you update the container port in your Flask app, ensure it matches the Kubernetes YAML.
 
 
 
