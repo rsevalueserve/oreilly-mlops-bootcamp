@@ -13,7 +13,7 @@ os.makedirs(os.path.dirname('model/'), exist_ok=True)
 
 def train():
     X_train, X_test, y_train, y_test, preprocessor = load_and_preprocess_data()
-    mlflow.set_tracking_uri("http://localhost:5000")
+    mlflow.set_tracking_uri("http://localhost:5001")
     mlflow.set_experiment("Income_Classification_Randomforest")
     with mlflow.start_run():
 

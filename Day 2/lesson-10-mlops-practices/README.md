@@ -18,7 +18,7 @@ This project demonstrates a full MLOps pipeline using the UCI Adult Income datas
 
 ## Prerequisites
 
-* Python 3.x
+* Python 3.11 (required for MLflow compatibility)
 * Docker + Docker Hub account
 * A Kubernetes cluster (e.g., Docker Desktop with K8s enabled)
 * `kubectl` configured
@@ -50,21 +50,36 @@ Sure! Here's a shorter version of each item (3–4 words each) for a concise ove
 
 ## How to Use
 
-1. **Install Dependencies**
+1. **Set Up Conda Environment (Recommended)**
+
+    Create and activate a conda environment with Python 3.11:
+
+    ```bash
+    # Create new environment with Python 3.11
+    conda create -n mlops-py311 python=3.11
+    
+    # Activate the environment
+    conda activate mlops-py311
+    
+    # Verify Python version
+    python --version
+    ```
+
+2. **Install Dependencies**
 
     ```bash
     pip install -r requirements.txt
     ```
 
-2. **Train & Register Your Model (MLflow)**
+3. **Train & Register Your Model (MLflow)**
 
     Start the MLflow UI:
 
     ```bash
-    mlflow ui
+    mlflow ui --port 5001
     ```
 
-    Visit `http://localhost:5000`.
+    Visit `http://localhost:5001`.
 
     Train and register a model:
 
@@ -72,7 +87,7 @@ Sure! Here's a shorter version of each item (3–4 words each) for a concise ove
     python train.py
     ```
 
-3. **Build and Push Docker Image**
+4. **Build and Push Docker Image**
 
     ```bash
     docker login
@@ -81,7 +96,7 @@ Sure! Here's a shorter version of each item (3–4 words each) for a concise ove
     ```
 
 
-4. **Kubernetes Deployment**
+5. **Kubernetes Deployment**
 
     Deploy Flask app, Prometheus, and Grafana:
 
@@ -110,6 +125,36 @@ Sure! Here's a shorter version of each item (3–4 words each) for a concise ove
   * `predict_requests_total`
   * `predict_exceptions_total`
   * `predict_request_latency_seconds`
+
+---
+
+## Troubleshooting
+
+### MLflow Compatibility Issues
+
+If you encounter `AttributeError: 'EntryPoints' object has no attribute 'get'`:
+
+1. **Ensure you're using Python 3.11**:
+   ```bash
+   python --version
+   ```
+
+2. **If using Python 3.12+, create a conda environment with Python 3.11**:
+   ```bash
+   conda create -n mlops-py311 python=3.11
+   conda activate mlops-py311
+   pip install -r requirements.txt
+   ```
+
+3. **Alternative: Use MLflow server instead of UI**:
+   ```bash
+   python -m mlflow server --port 5001 --host 0.0.0.0
+   ```
+
+### Port Conflicts
+
+* **Port 5000**: Often reserved on macOS for AirPlay Receiver
+* **Solution**: Use port 5001 as shown in the instructions above
 
 
 ## Summary
