@@ -52,9 +52,26 @@ Before starting, make sure you have the following installed:
 
 * Docker
 * Kubectl
-* Python 3.x
+* Python 3.11 (required for MLflow compatibility)
 * Postman (for testing APIs)
-* Mlflow
+* MLflow
+
+### Environment Setup
+
+For the best experience, we recommend setting up a conda environment with Python 3.11:
+
+```bash
+# Create new environment with Python 3.11
+conda create -n mlops-py311 python=3.11
+
+# Activate the environment
+conda activate mlops-py311
+
+# Verify Python version
+python --version
+```
+
+**Note**: Python 3.12+ may cause compatibility issues with MLflow. If you encounter `AttributeError: 'EntryPoints' object has no attribute 'get'`, please use Python 3.11.
 
 ---
 
