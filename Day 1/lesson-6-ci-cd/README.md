@@ -1,5 +1,5 @@
 
-# Lesson 6: CI/CD Pipeline with GitHub Actions
+# Lesson 6: CI/CD Pipeline with GitHub Actions -testing
 
 This lesson extends the ML pipeline by automating build, test, and deploy using **CI/CD** via **GitHub Actions**.
 
