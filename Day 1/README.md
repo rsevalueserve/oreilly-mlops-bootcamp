@@ -66,7 +66,7 @@ By the end of Day 1, you will be able to:
 
 ---
 
-### 5. `lesson-6-ci-cd/` – CI/CD with GitHub Actions
+### 5. `lesson-6-ci-cd/` – CI/CD with GitHub Actions -testing
 **Objective**: Automate ML workflows with CI/CD
 
 - Extend the ML pipeline by integrating **CI/CD** using **GitHub Actions**
