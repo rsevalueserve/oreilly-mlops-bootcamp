@@ -10,7 +10,7 @@ A comprehensive, hands-on MLOps bootcamp that takes you from basic concepts to p
 
 ---
 
-## 🎯 What You'll Learn 
+## 🎯 What You'll Learn 2
 
 This bootcamp covers the complete MLOps journey:
 
